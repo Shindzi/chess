@@ -131,11 +131,17 @@ class Main:
 
     # перемещение фигуры
     def move(self, x, y):
+
+        if self.matrix[x][y] != 0:
+            self.canvas.delete(self.matrix[x][y].shape)
+            self.matrix[x][y] = 0
+
         # собсно перемещение
         self.matrix[x][y] = self.matrix[self.active[0]][self.active[1]]
         self.canvas.delete(self.matrix[self.active[0]][self.active[1]].shape)
         self.matrix[self.active[0]][self.active[1]] = 0
-        self.matrix[x][y].shape = self.canvas.create_rectangle(x*50 + 10, y*50 + 10, x*50 + 40, y*50 + 40, fill=self.matrix[x][y].color)
+        self.matrix[x][y].shape = self.canvas.create_rectangle(x*50 + 10, y*50 + 10, x*50 + 40, y*50 + 40,
+                                                               fill=self.matrix[x][y].color)
         self.matrix[x][y].coord = [x, y]
         for i in range(len(self.matrix)):
             for k in range(len(self.matrix[0])):

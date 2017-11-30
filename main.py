@@ -10,7 +10,6 @@ class Main:
         self.height = 0
         self.matrix = []
         self.active = []
-        self.points = []
         self.moves = []
         self.chessmen = []
 

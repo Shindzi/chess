@@ -19,10 +19,32 @@ class King:
                             self.possible_moves.append([x, y])
                         elif matrix_copy[x][y].side != self.side:
                             self.possible_moves.append([x, y])
-        print(self.possible_moves)
 
 
 class Bishop:
     label = "bishop"
     side = 0
     possible_moves = []
+
+
+class Rook:
+    label = "rook"
+    side = 0
+    color = "yellow"
+
+    coord = []
+    possible_moves = []
+    check_moves = []
+
+    def set_possible_moves(self, matrix_copy):
+        self.possible_moves = []
+
+        counter = 0
+        for i in range(len(matrix_copy[0]) - self.coord[1] - 1):
+            self.possible_moves.append([self.coord[0], self.coord[1]+i+1])
+        for i in range(self.coord[1]):
+            self.possible_moves.append([self.coord[0], self.coord[1]-i-1])
+        for i in range(len(matrix_copy) - self.coord[0] - 1):
+            self.possible_moves.append([self.coord[0] + i + 1, self.coord[1]])
+        for i in range(self.coord[0]):
+            self.possible_moves.append([self.coord[0] - i - 1, self.coord[1]])
